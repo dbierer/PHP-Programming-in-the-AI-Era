@@ -39,12 +39,12 @@ class SimpleAPICall
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);  // Don't verify the certificate's name against host
         // Make the call
         try {
-            $response = curl_exec($ch);
+            $text = curl_exec($ch);
             $error = curl_error($ch);
             if (!empty($error)) {
                 throw new Exception(sprintf('ERROR %s [%s]', __LINE__, $error));
             }
-            $response = ['success' => TRUE, 'data' => $response];
+            $response = ['success' => TRUE, 'data' => $text];
         } catch (Throwable $t) {
             error_log(__METHOD__ . ':' . $t->getMessage());
             $response = ['success' => FALSE, 'data' => static::API_ERROR];
@@ -94,7 +94,7 @@ class SimpleAPICall
             ],
             CURLOPT_POSTFIELDS      => $send,
             CURLOPT_RETURNTRANSFER  => true,   // return body as string (binary-safe)
-            CURLOPT_HEADER          => true,   // include headers so we can split + read status
+            CURLOPT_HEADER          => false,  // exclude headers
             CURLOPT_TIMEOUT         => 60,
             CURLOPT_SSL_VERIFYPEER  => false,   // set this to TRUE in production!
             CURLOPT_SSL_VERIFYHOST  => false    // set this to TRUE in production!

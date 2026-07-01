@@ -6,7 +6,6 @@ class GenAiUsageTracker
 {
     public const CSV_FN  = __DIR__ . '/../Chapter07/api_call_usage.csv';
     public const CALL_LOG  = __DIR__ . '/../Chapter07/api_call.log';
-    public ?ArrayObject $logInfo = NULL;
     public string $csv_fn    = '';
     public string $log_fn    = '';
     public string $separator = ',';

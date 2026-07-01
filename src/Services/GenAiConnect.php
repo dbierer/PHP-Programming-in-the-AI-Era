@@ -1,6 +1,7 @@
 <?php
 namespace Cookbook\Services;
 use Exception;
+use Throwable;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Laminas\Diactoros\Response\JsonResponse;
@@ -15,6 +16,7 @@ class GenAiConnect
     }
     public function genAIcall(string $prompt) : ResponseInterface
     {
+        $httpCode = 500;
         // $config is an array that contains the following keys:
         /*
          * ai_api_url : endpoint for the API call

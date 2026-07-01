@@ -3,7 +3,7 @@ namespace Cookbook\Usage;
 use Generator;
 use DateTime;
 use SplFileObject;
-use InvalidArgumentException;
+use Throwable;
 #[OpenAiPlatform("Tracks token usage for OpenAI")]
 class OpenAiPlatform implements PlatformInterface
 {

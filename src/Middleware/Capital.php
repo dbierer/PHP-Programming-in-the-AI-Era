@@ -41,7 +41,7 @@ class Capital extends BaseHandler
             return new JsonResponse($response)->withStatus(500);
         }
     }
-    public function verify_iso2(string $name)
+    public function verify_iso2(string $name) : bool
     {
         $codes = $this->container->get('iso2');
         return (isset($codes[strtoupper($name)]) || in_array($name, $codes));
